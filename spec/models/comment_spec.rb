@@ -15,21 +15,23 @@ RSpec.describe Comment, type: :model do
   end
 
   describe "image_id" do
+    #let(:image) {Image.create(url: "http://example.com/", title: "test")}
     context "empty" do
       subject(:no_image_id_comment) {Comment.new(image_id: nil, body: "body")}
 
       it "invalid" do
         expect(no_image_id_comment).to_not be_valid
-        expect(no_image_id_comment.errors[:image].size).to be 1
+        expect(no_image_id_comment.errors[:image].size).to be 2
       end
     end
 
     context "illegal_id" do
+      let(:image) {Image.create(url: "http://example.com/", title: "test")}
       subject(:illegal_image_id_comment) {Comment.new(image_id: image.id + 1, body: "body")}
 
       it "invalid" do
         expect(illegal_image_id_comment).to_not be_valid
-        expect(illegal_image_id_comment.errors[:image].size).to be 1
+        expect(illegal_image_id_comment.errors[:image].size).to be 2
       end
     end
   end

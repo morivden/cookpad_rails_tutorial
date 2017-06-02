@@ -38,6 +38,8 @@ gem "haml-rails", "~> 0.9"
 gem 'rspec-rails', '~> 3.0', group: [:development, :test]
 gem 'rails-controller-testing'
 
+gem 'rspec-json_matcher', group: :test
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
